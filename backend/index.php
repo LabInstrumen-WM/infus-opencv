@@ -14,15 +14,17 @@
   $mysqli = mysqli_connect('localhost', 'jose', 'josekroos10', 'coba');
   if (!$mysqli)
     die("Can't connect to MySQL: " . mysqli_connect_error());
-  $sql = "SELECT * FROM tbinfus";
+  
+  $query = "SELECT * FROM tbinfus";
   $i = 0;
-  if ($result = $mysqli->query($sql)) {
+  if ($result = $mysqli->query($query)) {
     while ($row = $result->fetch_assoc()) {
       if ($i == 0) {
         echo '<div class="split left">';
       } else {
         echo '<div class="split right">';
       }
+
       echo '<div class="centered">';
       echo '<img src="data:image/jpeg;base64 ,' . base64_encode($row['image']) . '"/>';
       echo '</br>';
@@ -33,10 +35,11 @@
       echo $row['volume'];
       echo '</div>';
       echo '</div>';
+
       $i = $i + 1;
     }
   }
-?>
+  ?>
 
 </body>
 
